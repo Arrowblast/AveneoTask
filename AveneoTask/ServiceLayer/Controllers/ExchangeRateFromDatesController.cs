@@ -24,6 +24,7 @@ namespace AveneoTask.Controllers
 
         [HttpPost]
         [Route("GetFromDates")]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.None, NoStore = false)]
         public async Task<IActionResult> GetData(ExchangeRateFromDatesRequest req)
         {
             try
