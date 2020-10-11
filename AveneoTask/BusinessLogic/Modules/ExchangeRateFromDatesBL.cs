@@ -17,6 +17,9 @@ namespace AveneoTask.BusinessLogic.Modules
         
         public async Task<ExchangeRateFromDatesResponse> GetData(ExchangeRateFromDatesRequest req)
         {
+
+
+
             if(req.EndDate > DateTime.Now)
             {
                 throw new Exception("Nie można pobrać danych z przyszłości");

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AveneoTask.BusinessLogic.Modules;
+using AveneoTask.Security;
 using AveneoTask.ServiceLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using Newtonsoft.Json;
 
 namespace AveneoTask.Controllers
 {
+    [HMACAuthentication]
     [ApiController]
     [Route("ExchangeRate")]
     public class ExchangeRateFromDatesController : ControllerBase
