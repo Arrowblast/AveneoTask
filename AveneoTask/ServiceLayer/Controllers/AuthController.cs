@@ -1,4 +1,5 @@
 ﻿
+using AveneoTask.BusinessLogic.Modules;
 using AveneoTask.Database;
 using AveneoTask.Database.Models;
 using AveneoTask.Database.Query;
@@ -35,47 +36,8 @@ namespace AveneoTask.ServiceLayer.Controllers
         {
             _logger.LogInformation("/ExchangeRate/GetFromDates");
             string APIKey = string.Empty;
-            GenerateKeyResponse response = new GenerateKeyResponse();
-            using (var cryptoProvider = new RNGCryptoServiceProvider())
-            {
-                byte[] secretKeyByteArray = new byte[32]; //256 bit
-                cryptoProvider.GetBytes(secretKeyByteArray);
-                APIKey = Convert.ToBase64String(secretKeyByteArray);
-            }
-            string AppID = string.Empty;
-            if (!req.forSession)
-            {
-                AppID = GetMachineGuid();
-            }
-            else
-            {
-                AppID = Guid.NewGuid().ToString();
-            }
-            response.AppID = AppID;
-            response.ApiKey = APIKey;
-            MemoryCacheEntryOptions cacheExpirationOptions = new MemoryCacheEntryOptions();
-            cacheExpirationOptions.AbsoluteExpiration = DateTime.Now.AddMinutes(30);
-            cacheExpirationOptions.Priority = CacheItemPriority.High;
-            _cache.Set("AppID", AppID, cacheExpirationOptions);
-            _cache.Set("ApiKey", APIKey, cacheExpirationOptions);
-            await Db.Connection.OpenAsync();
-            ApiKeys model = new ApiKeys()
-            {
-                AppID = AppID,
-                ApiKey = APIKey
-            };
-            model.Db = Db;
-            var query = new ApiKeysQuery(Db);
-            var queryResult = await query.FindOneByIDAsync(AppID);
-            if(queryResult is null)
-            {
-                await model.InsertAsync();
-            }
-            else
-            {
-                await model.UpdateAsync();
-            }
-            await Db.Connection.CloseAsync();
+            GenerateKeyResponse response = await new AuthBL().GenerateKey(req, _cache, Db);
+            
             return Ok(response);
             
 

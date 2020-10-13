@@ -8,5 +8,6 @@ namespace AveneoTask.ServiceLayer.Models
     public class GenerateKeyRequest
     {
         public bool forSession { get; set; }
+        public bool cache { get; set; }
     }
 }

@@ -75,10 +75,13 @@ namespace AveneoTask.BusinessLogic.Modules
                     }
                     SDMXresponse = await checkData(SDMXresponse, req.StartDate, req.EndDate);
                     exchangeRateFromDatesResponse.ExchangeRateValues.Add(SDMXresponse);
-                    MemoryCacheEntryOptions cacheExpirationOptions = new MemoryCacheEntryOptions();
-                    cacheExpirationOptions.AbsoluteExpiration = DateTime.Now.AddMinutes(30);
-                    cacheExpirationOptions.Priority = CacheItemPriority.High;
-                    _cache.Set(SDMXresponse.ExchangeRateName + "_" + req.StartDate.ToShortDateString() + "_" + req.EndDate.ToShortDateString(), SDMXresponse, cacheExpirationOptions); 
+                    if (req.cache)
+                    {
+                        MemoryCacheEntryOptions cacheExpirationOptions = new MemoryCacheEntryOptions();
+                        cacheExpirationOptions.AbsoluteExpiration = DateTime.Now.AddMinutes(30);
+                        cacheExpirationOptions.Priority = CacheItemPriority.High;
+                        _cache.Set(SDMXresponse.ExchangeRateName + "_" + req.StartDate.ToShortDateString() + "_" + req.EndDate.ToShortDateString(), SDMXresponse, cacheExpirationOptions);
+                    }
                 }
                 else
                 {

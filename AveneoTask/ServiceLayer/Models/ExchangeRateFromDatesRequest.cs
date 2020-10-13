@@ -11,5 +11,6 @@ namespace AveneoTask.ServiceLayer.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string ApiKey { get; set; }
+        public bool cache { get; set; }
     }
 }
