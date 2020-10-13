@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Alachisoft.NCache.Caching.Distributed;
+using AveneoTask.Database;
 using AveneoTask.Security;
 using AveneoTask.ServiceLayer.ClientFactory;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace AveneoTask
             /*services.Configure<ServicePointsOptions>(Configuration.GetSection(
                                         ServicePointsOptions.ServicePoints));*/
             services.AddResponseCaching();
+            services.AddMemoryCache();
+            services.AddTransient<MySQLDB>(_ => new MySQLDB(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddNCacheDistributedCache
  (Configuration.GetSection("NCacheSettings"));
             services.AddControllers();

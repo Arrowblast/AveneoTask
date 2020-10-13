@@ -9,10 +9,10 @@ namespace AveneoTask.ServiceLayer.Models
     {
         public ExchangeRateFromDatesSDMXResponse()
         {
-            Values = new Dictionary<DateTime, decimal>();
+            Values = new SortedDictionary<DateTime, decimal>();
         }
         public string ExchangeRateName { get; set; }
-        public Dictionary<DateTime, decimal> Values { get; set; }
+        public SortedDictionary<DateTime, decimal> Values { get; set; }
         public string Status { get; set; }
     }
 }

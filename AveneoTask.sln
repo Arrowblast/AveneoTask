@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AveneoTask", "AveneoTask\AveneoTask.csproj", "{BC1BFD7F-9EB6-4019-A757-63A4CD95BE34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AveneoTask", "AveneoTask\AveneoTask.csproj", "{BC1BFD7F-9EB6-4019-A757-63A4CD95BE34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AveneoTaskTest", "AveneoTaskTest\AveneoTaskTest.csproj", "{DEFDB78A-7637-4696-A56A-24A1E62B3283}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BC1BFD7F-9EB6-4019-A757-63A4CD95BE34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC1BFD7F-9EB6-4019-A757-63A4CD95BE34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC1BFD7F-9EB6-4019-A757-63A4CD95BE34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEFDB78A-7637-4696-A56A-24A1E62B3283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFDB78A-7637-4696-A56A-24A1E62B3283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFDB78A-7637-4696-A56A-24A1E62B3283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFDB78A-7637-4696-A56A-24A1E62B3283}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
